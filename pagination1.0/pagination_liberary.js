@@ -340,7 +340,7 @@
                     
                 });
                 
-                append_data+='<tr value='+value_of_id+' id='+tr_id+'>'+ttd+'</tr>';
+                //append_data+='<tr value='+value_of_id+' id='+tr_id+'>'+ttd+'</tr>';
                 tr_id++;
                   
             });
