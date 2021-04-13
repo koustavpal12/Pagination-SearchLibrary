@@ -52,8 +52,6 @@ if (isset($_POST['request']) && $_POST['request'] == 'data') {
         $value = array(array('email', 'mock_test_db.mock_test_tbl', 'email', 'null as name,id,null as email,null as phone,null as gender', 'id'));
     }
     
-//$value = array(array('email', 'mock_test_db.mock_test_tbl', 'email', 'null as name,id,null as email,null as phone,null as gender', 'id'));
-    
     $query_data = array();
 
     foreach ($value as $key => $value1) {
@@ -66,7 +64,6 @@ if (isset($_POST['request']) && $_POST['request'] == 'data') {
     $result = array();
 
     if ($get_query_and_data['query'] != '') {
-        //echo "<pre>".print_r($get_query_and_data, true)."</pre>";
         $result = mysqli_prepared_query($connection_mock_chat, $get_query_and_data['query'], "", $params);
     }
 
@@ -77,10 +74,6 @@ if (isset($_POST['request']) && $_POST['request'] == 'data') {
     $table_from = array("table_name_id", "table_name_email");
     $table1_to = array("mock_test_db.mock_test_tbl", "mock_test_db.mock_test_tbl");
     $tble1 = str_replace($table_from, $table1_to, $where_data);
-/*
-    echo "<pre>".print_r($table_from, true)."</pre>";
-echo "<pre>".print_r($table1_to, true)."</pre>";*/
-//echo "<pre>".print_r($tble1, true)."</pre>";
 
     if ($tble1 == '') {
         $total_data = array();
@@ -175,11 +168,9 @@ Class ManageApp {
         $max_page = ceil($total_length / $data_per_page);
 
         $query = "SELECT * FROM mock_test_tbl WHERE " . $where . "  LIMIT ?,?";
-//echo "<pre>".print_r($query, true)."</pre>";
         $params = array($data_from, $data_to);
-//echo "<pre>".print_r($params, true)."</pre>";
         $extra_slots_entry = mysqli_prepared_query($connection_mock_chat, $query, "ii", $params);
-//echo "<pre>".print_r($extra_slots_entry, true)."</pre>";
+
         if ($extra_slots_entry) {
             foreach ($extra_slots_entry as $val) {
                 $res_here = $val;
@@ -196,7 +187,7 @@ Class ManageApp {
                 $response[] = $res_here;
             }
         }
-//echo "<pre>".print_r($response, true)."</pre>";
+
         return $response;
     }
 
